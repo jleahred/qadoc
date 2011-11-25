@@ -1,0 +1,6 @@
+build
+.directory
+*~
+__builds
+bin/adoc/temp.py
+bin/adoc/temp.txt

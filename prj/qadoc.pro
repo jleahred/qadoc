@@ -9,6 +9,9 @@
 QT += webkit
 QT       += core gui
 
+QMAKE_CXXFLAGS += -std=gnu++0x
+
+
 TARGET = qadoc
 TEMPLATE = app
 
@@ -24,3 +27,6 @@ HEADERS  += ../src/mainwindow.h \
 
 FORMS += \
     ../src/forms/dialog_compile_options.ui
+
+
+LIBS = -laspell

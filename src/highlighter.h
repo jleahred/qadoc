@@ -4,6 +4,9 @@
 #include <QSyntaxHighlighter>
 
 
+class  AspellConfig;
+class  AspellSpeller;
+
 
 class Highlighter : public QSyntaxHighlighter
 {
@@ -11,24 +14,27 @@ class Highlighter : public QSyntaxHighlighter
 
  public:
     Highlighter(QTextDocument *parent = 0);
+    ~Highlighter();
 
  protected:
      void highlightBlock(const QString &text);
 
  private:
+     AspellConfig * spell_config;
+     AspellSpeller * spell_checker;
+
      struct HighlightingRule
      {
-         QRegExp pattern;
-         QTextCharFormat format;
+         QRegExp            pattern;
+         QTextCharFormat    format;
+         bool               check_spelling;
      };
      QVector<HighlightingRule> highlightingRules;
 
-/*
-     QTextCharFormat header1;
-     QTextCharFormat header2;
-     QTextCharFormat header3;
-     QTextCharFormat comment;
-*/
+     //QTextCharFormat spellCheckFormat;
+
+     bool   checkWord(const QString& word);
+     void   spellCheck(const QString &text);
 };
 
 #endif // HIGHLIGHTER_H

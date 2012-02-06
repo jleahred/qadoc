@@ -4,3 +4,5 @@ build
 __builds
 bin/adoc/temp.py
 bin/adoc/temp.txt
+qadoc-build-desktop/*
+prj/qadoc.pro.user

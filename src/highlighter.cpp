@@ -1,14 +1,27 @@
 #include "highlighter.h"
 
+#include "aspell.h"
+#include <iostream>
 
 
 
 
+Highlighter::Highlighter(QTextDocument *parent)
+     : QSyntaxHighlighter(parent), spell_config(new_aspell_config()), spell_checker(0)
+{
+    {
+        aspell_config_replace(spell_config, "lang", "en_US");
+        AspellCanHaveError * possible_err = new_aspell_speller(spell_config);
+        spell_checker = 0;
 
- Highlighter::Highlighter(QTextDocument *parent)
-     : QSyntaxHighlighter(parent)
- {
-     //HighlightingRule rule;
+        if (aspell_error_number(possible_err) != 0)
+            std::cerr <<  aspell_error_message(possible_err);
+        else
+            spell_checker = to_aspell_speller(possible_err);
+    }
+
+
+    //HighlightingRule rule;
 
     //  tokens
      /*
@@ -49,28 +62,23 @@
 
     {       //  link 1     ->         include::including_section.adoc[]
         // header 1
-        HighlightingRule rule;
         QTextCharFormat format;
         format.setForeground(Qt::blue);
         QFont font("monospace", 9);
         font.setUnderline(true);
         format.setFont(font);
-        rule.pattern = QRegExp("^include::.*\\[\\] *");
-        rule.format = format;
-        highlightingRules.append(rule);
+        highlightingRules.append({QRegExp("^include::.*\\[\\] *"), format, false });
     }
 
      {       //  http link      ->     http://www.methods.co.nz/asciidoc/[asciidoc]
          // header 1
-         HighlightingRule rule;
          QTextCharFormat format;
          //format.setForeground(Qt::blue);
          QFont font("monospace", 9);
          font.setUnderline(true);
          format.setFont(font);
-         rule.pattern = QRegExp("http://[^\\] ]+\\]");
-         rule.format = format;
-         highlightingRules.append(rule);
+         highlightingRules.append({QRegExp("http://[^\\] ]+\\]"), format, false });
+
      }
      {       //  http link      ->     http://www.methods.co.nz/asciidoc/
          // header 1
@@ -80,9 +88,7 @@
          QFont font("monospace", 9);
          font.setUnderline(true);
          format.setFont(font);
-         rule.pattern = QRegExp("http://[^ ]+");
-         rule.format = format;
-         highlightingRules.append(rule);
+         highlightingRules.append({QRegExp("http://[^ ]+"), format, false });
      }
 
      {       //  link      ->     link:prueba[caption]
@@ -93,9 +99,7 @@
          QFont font("monospace", 9);
          font.setUnderline(true);
          format.setFont(font);
-         rule.pattern = QRegExp("link:[^\\]]+\\]");
-         rule.format = format;
-         highlightingRules.append(rule);
+         highlightingRules.append({QRegExp("link:[^\\]]+\\]"), format, false });
      }
      {       //  link      ->     link:eadoc:prueba[caption]
          // header 1
@@ -105,9 +109,7 @@
          QFont font("monospace", 8);
          font.setUnderline(true);
          format.setFont(font);
-         rule.pattern = QRegExp("link:eadoc:[^\\]]+\\]");
-         rule.format = format;
-         highlightingRules.append(rule);
+         highlightingRules.append({QRegExp("link:eadoc:[^\\]]+\\]"), format, false });
      }
      {       //  link      ->     link:adoc:prueba[caption]
          // header 1
@@ -117,9 +119,7 @@
          QFont font("monospace", 8);
          font.setUnderline(true);
          format.setFont(font);
-         rule.pattern = QRegExp("link:adoc:[^\\]]+\\]");
-         rule.format = format;
-         highlightingRules.append(rule);
+         highlightingRules.append({QRegExp("link:adoc:[^\\]]+\\]"), format, false });
      }
 
      {  //  link description bigger
@@ -130,10 +130,7 @@
          font.setUnderline(true);
          font.setBold(true);
          format.setFont(font);
-         rule.pattern = QRegExp("\\[.*\\]");
-         rule.format = format;
-         highlightingRules.append(rule);
-
+         highlightingRules.append({QRegExp("\\[.*\\]"), format, false });
      }
 
 
@@ -145,8 +142,7 @@
         format.setForeground(Qt::blue);
         format.setFont(QFont("monospace", 23));
         rule.pattern = QRegExp("^= .*$");
-        rule.format = format;
-        highlightingRules.append(rule);
+        highlightingRules.append({QRegExp("^= .*$"), format, true });
     }
     {
          // header 2
@@ -154,9 +150,7 @@
          QTextCharFormat format;
          format.setForeground(Qt::blue);
          format.setFont(QFont("monospace", 18));
-         rule.pattern = QRegExp("^== .*$");
-         rule.format = format;
-         highlightingRules.append(rule);
+         highlightingRules.append({QRegExp("^== .*$"), format, true });
      }
      {
          // header 3
@@ -164,9 +158,7 @@
          QTextCharFormat format;
          format.setForeground(Qt::blue);
          format.setFont(QFont("monospace", 14));
-         rule.pattern = QRegExp("^=== .*$");
-         rule.format = format;
-         highlightingRules.append(rule);
+         highlightingRules.append({QRegExp("^=== .*$"), format, true });
      }
 
      {
@@ -175,9 +167,7 @@
          QTextCharFormat format;
          format.setForeground(Qt::blue);
          format.setFont(QFont("monospace", 11));
-         rule.pattern = QRegExp("^==== .*$");
-         rule.format = format;
-         highlightingRules.append(rule);
+         highlightingRules.append({QRegExp("^==== .*$"), format, true });
      }
 
      {
@@ -188,9 +178,7 @@
          QFont font("monospace", 9);
          font.setBold(true);
          format.setFont(font);
-         rule.pattern = QRegExp("(^| )\\*[A-Za-z0-9][^\\*]*[A-Za-z0-9]\\*($| )");
-         rule.format = format;
-         highlightingRules.append(rule);
+         highlightingRules.append({QRegExp("(^| )\\*[A-Za-z0-9][^\\*]*[A-Za-z0-9]\\*($| )"), format, true });
      }
 
      {
@@ -201,9 +189,7 @@
          QFont font("monospace", 9);
          font.setItalic(true);
          format.setFont(font);
-         rule.pattern = QRegExp("(^| )\\_[A-Za-z0-9][^\\*]*[A-Za-z0-9]\\_($| )");
-         rule.format = format;
-         highlightingRules.append(rule);
+         highlightingRules.append({QRegExp("(^| )\\_[A-Za-z0-9][^\\*]*[A-Za-z0-9]\\_($| )"), format, true });
      }
 
 
@@ -215,9 +201,7 @@
          QFont font("monospace", 9);
          font.setItalic(true);
          format.setFont(font);
-         rule.pattern = QRegExp("^//.*$");
-         rule.format = format;
-         highlightingRules.append(rule);
+         highlightingRules.append({QRegExp("^//.*$"), format, true });
      }
 
      {
@@ -228,9 +212,7 @@
          QFont font("monospace", 9);
          font.setBold(true);
          format.setFont(font);
-         rule.pattern = QRegExp("^\\[.*\\] *$");
-         rule.format = format;
-         highlightingRules.append(rule);
+         highlightingRules.append({QRegExp("^\\[.*\\] *$"), format, true });
      }
 
      {
@@ -241,9 +223,7 @@
          QFont font("monospace", 9);
          font.setBold(true);
          format.setFont(font);
-         rule.pattern = QRegExp("^.*::");
-         rule.format = format;
-         highlightingRules.append(rule);
+         highlightingRules.append({QRegExp("^.*::"), format, true });
      }
 
      {
@@ -254,9 +234,7 @@
          QFont font("monospace", 9);
          font.setBold(true);
          format.setFont(font);
-         rule.pattern = QRegExp("^.*;;");
-         rule.format = format;
-         highlightingRules.append(rule);
+         highlightingRules.append({QRegExp("^.*;;"), format, true });
      }
 
 
@@ -269,9 +247,7 @@
          QFont font("monospace", 9);
          font.setUnderline(true);
          format.setFont(font);
-         rule.pattern = QRegExp("<<.+>>");
-         rule.format = format;
-         highlightingRules.append(rule);
+         highlightingRules.append({QRegExp("<<.+>>"), format, false });
      }
 
      {       //  mark to receive an internal link      ->     [[text]]
@@ -284,10 +260,11 @@
          font.setBold(true);
          //font.setUnderline(true);
          format.setFont(font);
-         rule.pattern = QRegExp("^\\[\\[.+\\]\\] *$");
-         rule.format = format;
-         highlightingRules.append(rule);
+         highlightingRules.append({QRegExp("^\\[\\[.+\\]\\] *$"), format, true });
      }
+
+     //spellCheckFormat.setUnderlineColor(QColor(Qt::red));
+     //spellCheckFormat.setUnderlineStyle(QTextCharFormat::SpellCheckUnderline);
 
      /*
      {
@@ -345,11 +322,19 @@
 
  }
 
+Highlighter::~Highlighter()
+{
+    delete_aspell_speller(spell_checker);
+    delete  spell_config;
+}
+
 
  void Highlighter::highlightBlock(const QString &text)
  {
      setCurrentBlockState(0);
 
+     if (currentBlockState() == 0)
+         spellCheck(text);
 
      {  //  sidebar block
          QTextCharFormat multiLineCommentFormat;
@@ -379,6 +364,7 @@
             setFormat(startIndex, commentLength, multiLineCommentFormat);
             startIndex = text.indexOf(startExpression,
                                       startIndex + commentLength);
+            spellCheck(text.mid(startIndex, commentLength));
          }
      }
 
@@ -391,6 +377,8 @@
              int length = expression.matchedLength();
              setFormat(index, length, rule.format);
              index = expression.indexIn(text, index + length);
+             if(rule.check_spelling)
+                 spellCheck(text.mid(index, length+1));
          }
      }
 
@@ -428,6 +416,7 @@
             setFormat(startIndex, commentLength, multiLineCommentFormat);
             startIndex = text.indexOf(startExpression,
                                       startIndex + commentLength);
+            spellCheck(text.mid(startIndex, commentLength));
          }
      }
 
@@ -463,8 +452,50 @@
             setFormat(startIndex, commentLength, multiLineCommentFormat);
             startIndex = text.indexOf(startExpression,
                                       startIndex + commentLength);
+            spellCheck(text.mid(startIndex, commentLength));
          }
      }
+}
 
+bool   Highlighter::checkWord(const QString& word)
+{
+    if(spell_checker)
+        return  aspell_speller_check(spell_checker, word.toStdString().c_str(), -1);
+    else
+        return true;
+}
 
+ void Highlighter::spellCheck(const QString &text)
+ {
+     // split text into words
+     QString str = text.simplified();
+     if (!str.isEmpty()) {
+             QStringList Checkliste = str.split(QRegExp("([^\\w,^\\\\]|(?=\\\\))+"),
+                             QString::SkipEmptyParts);
+             int l,number;
+             // check all words
+             for (int i=0; i<Checkliste.size(); ++i) {
+                     str = Checkliste.at(i);
+                     if (str.length()>1 &&!str.startsWith('\\'))
+                     {
+                             if (!checkWord(str)) {
+                                     number = text.count(QRegExp("\\b" + str + "\\b"));
+                                     l=-1;
+                                     // underline all incorrect occurences of misspelled word
+                                     for (int j=0;j < number; ++j)
+                                     {
+                                             l = text.indexOf(QRegExp("\\b" + str + "\\b"),l+1);
+                                             if (l>=0)
+                                             {
+                                                 QTextCharFormat  current_format =  this->format(l);
+                                                 current_format.setUnderlineColor(QColor(Qt::red));
+                                                 current_format.setUnderlineStyle(QTextCharFormat::SpellCheckUnderline);
+                                                 setFormat(l, str.length(), current_format);
+                                                 //setFormat(l, str.length(), spellCheckFormat);
+                                             }
+                                     } // for j
+                             } // if spell chek error
+                     } // if str.length > 1
+             } // for
+     } // if str.isEmpty
  }

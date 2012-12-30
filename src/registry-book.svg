@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="511.85767"
+   height="491.42981"
+   id="svg39605"
+   version="1.1"
+   inkscape:version="0.47pre4 "
+   sodipodi:docname="registry-book.svg">
+  <defs
+     id="defs39607">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective39613" />
+    <inkscape:perspective
+       id="perspective39566"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient10759"
+       id="linearGradient11197"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(4.8085042,0,0,4.8085042,94832.361,200.40155)"
+       x1="-19644.939"
+       y1="168.5623"
+       x2="-19647.479"
+       y2="157.9872" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient10759">
+      <stop
+         style="stop-color:#803300;stop-opacity:1"
+         offset="0"
+         id="stop10761" />
+      <stop
+         style="stop-color:#aa4400;stop-opacity:0;"
+         offset="1"
+         id="stop10763" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient10738"
+       id="linearGradient11195"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(4.8085042,0,0,4.8085042,94854.459,197.21348)"
+       x1="-19657.375"
+       y1="144.61221"
+       x2="-19649.535"
+       y2="153.7372" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient10738">
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1;"
+         offset="0"
+         id="stop10740" />
+      <stop
+         style="stop-color:#ff0000;stop-opacity:0;"
+         offset="1"
+         id="stop10742" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient10769"
+       id="linearGradient11193"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(4.8085042,0,0,4.8085042,94832.361,200.40155)"
+       x1="-19637.729"
+       y1="160.17023"
+       x2="-19644.533"
+       y2="150.71268" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient10769">
+      <stop
+         style="stop-color:#2b1100;stop-opacity:1;"
+         offset="0"
+         id="stop10771" />
+      <stop
+         style="stop-color:#2b1100;stop-opacity:0;"
+         offset="1"
+         id="stop10773" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient10749"
+       id="linearGradient11191"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(4.8085042,0,0,4.8085042,94855.315,195.30153)"
+       x1="-19652.875"
+       y1="143.61221"
+       x2="-19649.307"
+       y2="151.77333" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient10749">
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1;"
+         offset="0"
+         id="stop10751" />
+      <stop
+         style="stop-color:#ff0000;stop-opacity:0;"
+         offset="1"
+         id="stop10753" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient10710"
+       id="radialGradient11189"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-18.64075,-27.657069,1.9095905,-1.2870713,-366819.78,-543261.12)"
+       cx="-19671.764"
+       cy="120.49678"
+       fx="-19671.764"
+       fy="120.49678"
+       r="28.705463" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient10710">
+      <stop
+         style="stop-color:#ffefb5;stop-opacity:1;"
+         offset="0"
+         id="stop10712" />
+      <stop
+         style="stop-color:#ffefb5;stop-opacity:0;"
+         offset="1"
+         id="stop10714" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient10723"
+       id="radialGradient11187"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-4.8085224,-4.0411485,1.3288664,-1.5812111,-94190.514,-78574.461)"
+       cx="-19639.004"
+       cy="77.422287"
+       fx="-19639.004"
+       fy="77.422287"
+       r="53.220081" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient10723">
+      <stop
+         style="stop-color:#734e21;stop-opacity:1;"
+         offset="0"
+         id="stop10725" />
+      <stop
+         style="stop-color:#734e21;stop-opacity:0;"
+         offset="1"
+         id="stop10727" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="283.98439"
+     inkscape:cy="478.57202"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1400"
+     inkscape:window-height="978"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata39610">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-91.015606,-519.5044)">
+    <path
+       style="fill:#513622;fill-opacity:1;stroke:none"
+       d="m 567.05188,798.39801 c 22.99779,2.1239 6.70237,9.86159 4.20563,15.6274 -69.74241,40.34462 -177.69611,89.91444 -268.07272,135.2392 -13.22165,1.79989 -23.24192,-2.80185 -30.05526,-13.82417 L 103.3287,637.01231 c -7.806488,-22.37361 -24.251714,-44.1713 2.10281,-68.82138 70.64123,-16.37477 79.72938,-34.44288 227.80299,-48.68653 87.55252,60.60931 178.29532,135.04449 268.07272,205.2635 3.98369,8.87509 0.11096,11.84954 -8.71087,11.11939 -12.18966,17.72799 -23.59701,36.11791 -25.54447,62.51072 z"
+       id="path11099"
+       sodipodi:nodetypes="cccccccccc"
+       inkscape:export-filename="E:\PEKNA_STRANKA\PROJEKTY\Svadobne_salony\Sablona\vzhlad-katalogu\ikony\kronika-big.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="cccccccccc"
+       id="path11101"
+       d="m 567.05188,798.39801 c 22.99779,2.1239 6.70237,9.86159 4.20563,15.6274 -69.74241,40.34462 -177.69611,89.91444 -268.07272,135.2392 -13.22165,1.79989 -23.24192,-2.80185 -30.05526,-13.82417 L 103.3287,637.01231 c -7.806488,-22.37361 -24.251714,-44.1713 2.10281,-68.82138 70.64123,-16.37477 79.72938,-34.44288 227.80299,-48.68653 87.55252,60.60931 178.29532,135.04449 268.07272,205.2635 3.98369,8.87509 0.11096,11.84954 -8.71087,11.11939 -12.18966,17.72799 -23.59701,36.11791 -25.54447,62.51072 z"
+       style="opacity:0.63478262;fill:url(#radialGradient11187);fill-opacity:1;stroke:none"
+       inkscape:export-filename="E:\PEKNA_STRANKA\PROJEKTY\Svadobne_salony\Sablona\vzhlad-katalogu\ikony\kronika-big.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#634218;fill-opacity:1;stroke:none"
+       d="M 570.65828,806.81259 296.57119,940.24858 c -13.38255,-1.24833 -15.21904,-47.91249 23.44166,-64.91477 L 592.89596,735.88729 c -25.25596,43.46388 -25.43351,59.07242 -22.23768,70.9253 z"
+       id="path11103"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="E:\PEKNA_STRANKA\PROJEKTY\Svadobne_salony\Sablona\vzhlad-katalogu\ikony\kronika-big.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#bd8431;fill-opacity:1;stroke:none"
+       d="m 363.28976,848.88718 -45.67934,27.04807 c -15.04149,7.67832 -24.39596,15.83103 -25.84408,24.64343 -0.56592,9.74507 -0.85998,18.94752 -3.60641,33.05856 6.51373,6.08093 14.13158,3.38004 21.74943,0.60477 l 52.49267,-26.7762 4.67169,9.77503 -63.11217,31.66423 c -14.70859,5.14001 -21.42207,-0.72292 -27.19787,-7.86302 L 104.93217,642.42192 c -26.587562,-50.72886 -8.494485,-65.06739 0.38838,-74.23099 L 137.30108,557.3717 363.3064,848.88718 z"
+       id="path11105"
+       sodipodi:nodetypes="ccccccccccccc"
+       inkscape:export-filename="E:\PEKNA_STRANKA\PROJEKTY\Svadobne_salony\Sablona\vzhlad-katalogu\ikony\kronika-big.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccccccccccc"
+       id="path11107"
+       d="m 363.28976,848.88718 -45.67934,27.04807 c -15.04149,7.67832 -24.39596,15.83103 -25.84408,24.64343 -0.56592,9.74507 -0.85998,18.94752 -3.60641,33.05856 6.51373,6.08093 14.13158,3.38004 21.74943,0.60477 l 52.49267,-26.7762 4.67169,9.77503 -63.11217,31.66423 c -14.70859,5.14001 -21.42207,-0.72292 -27.19787,-7.86302 L 104.93217,642.42192 c -26.587562,-50.72886 -8.494485,-65.06739 0.38838,-74.23099 L 137.30108,557.3717 363.3064,848.88718 z"
+       style="fill:url(#radialGradient11189);fill-opacity:1;stroke:none"
+       inkscape:export-filename="E:\PEKNA_STRANKA\PROJEKTY\Svadobne_salony\Sablona\vzhlad-katalogu\ikony\kronika-big.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#c63900;fill-opacity:1;stroke:none"
+       d="m 338.81056,888.34018 c 21.74943,23.3418 12.71121,44.02705 40.37514,82.24057 0,0 6.80779,-8.92559 9.35447,-8.92559 2.54668,0 15.72395,0.84996 15.72395,0.84996 -37.47337,-48.05231 -9.08261,-44.57351 -48.02628,-82.87746 l -17.42728,8.71252 z"
+       id="path11109"
+       sodipodi:nodetypes="ccsccc"
+       inkscape:export-filename="E:\PEKNA_STRANKA\PROJEKTY\Svadobne_salony\Sablona\vzhlad-katalogu\ikony\kronika-big.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccsccc"
+       id="path11111"
+       d="m 338.81056,888.34018 c 21.74943,23.3418 12.71121,44.02705 40.37514,82.24057 0,0 6.80779,-8.92559 9.35447,-8.92559 2.54668,0 15.72395,0.84996 15.72395,0.84996 -37.47337,-48.05231 -9.08261,-44.57351 -48.02628,-82.87746 l -17.42728,8.71252 z"
+       style="opacity:0.54782613;fill:url(#linearGradient11191);fill-opacity:1;stroke:none"
+       inkscape:export-filename="E:\PEKNA_STRANKA\PROJEKTY\Svadobne_salony\Sablona\vzhlad-katalogu\ikony\kronika-big.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="opacity:0.54782613;fill:url(#linearGradient11193);fill-opacity:1;stroke:none"
+       d="m 338.81056,888.34018 c 21.74943,23.3418 12.71121,44.02705 40.37514,82.24057 0,0 6.80779,-8.92559 9.35447,-8.92559 2.54668,0 15.72395,0.84996 15.72395,0.84996 -37.47337,-48.05231 -9.08261,-44.57351 -48.02628,-82.87746 l -17.42728,8.71252 z"
+       id="path11113"
+       sodipodi:nodetypes="ccsccc"
+       inkscape:export-filename="E:\PEKNA_STRANKA\PROJEKTY\Svadobne_salony\Sablona\vzhlad-katalogu\ikony\kronika-big.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccsccc"
+       id="path11115"
+       d="m 322.33205,896.56391 c 37.47336,28.44181 8.96608,68.30931 32.57419,108.02529 0,0 2.20824,-7.95516 4.75491,-7.95516 2.54669,0 6.99644,14.30016 6.99644,14.30016 4.01143,-24.37482 9.64299,-105.66608 -26.89827,-123.08338 l -17.42727,8.71309 z"
+       style="fill:#d45500;fill-opacity:1;stroke:none"
+       inkscape:export-filename="E:\PEKNA_STRANKA\PROJEKTY\Svadobne_salony\Sablona\vzhlad-katalogu\ikony\kronika-big.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="opacity:0.66521738;fill:url(#linearGradient11195);fill-opacity:1;stroke:none"
+       d="m 322.33205,896.56391 c 37.47336,28.44181 8.96608,68.30931 32.57419,108.02529 0,0 2.20824,-7.95516 4.75491,-7.95516 2.54669,0 6.99644,14.30016 6.99644,14.30016 4.01143,-24.37482 9.64299,-105.66608 -26.89827,-123.08338 l -17.42727,8.71309 z"
+       id="path11117"
+       sodipodi:nodetypes="ccsccc"
+       inkscape:export-filename="E:\PEKNA_STRANKA\PROJEKTY\Svadobne_salony\Sablona\vzhlad-katalogu\ikony\kronika-big.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccsccc"
+       id="path11119"
+       d="m 322.33205,896.56391 c 37.47336,28.44181 8.96608,68.30931 32.57419,108.02529 0,0 2.20824,-7.95516 4.75491,-7.95516 2.54669,0 6.99644,14.30016 6.99644,14.30016 4.01143,-24.37482 9.64299,-105.66608 -26.89827,-123.08338 l -17.42727,8.71309 z"
+       style="opacity:0.66521738;fill:url(#linearGradient11197);fill-opacity:1;stroke:none"
+       inkscape:export-filename="E:\PEKNA_STRANKA\PROJEKTY\Svadobne_salony\Sablona\vzhlad-katalogu\ikony\kronika-big.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+  </g>
+</svg>

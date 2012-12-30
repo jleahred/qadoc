@@ -34,3 +34,7 @@ FORMS += \
 INCLUDEPATH += ../extlibs/mqeditor/src  ../extlibs/maiquel-toolkit-cpp/src
 
 LIBS = -laspell -L../extlibs/maiquel-toolkit-cpp/lib       -lmtksupport  -lyaml
+
+
+RESOURCES += \
+    ../src/rc.qrc

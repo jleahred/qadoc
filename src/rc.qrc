@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="aa">registry-book.svg</file>
+        <file>book.svg</file>
+    </qresource>
+</RCC>

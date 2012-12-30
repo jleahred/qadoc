@@ -3,7 +3,6 @@
 #include <iostream>
 
 
-#include <QPlainTextEdit>
 #include <QTextStream>
 #include <QFile>
 #include <QSplitter>
@@ -19,6 +18,8 @@
 #include <QClipboard>
 #include <QLineEdit>
 
+#include  "support/alarm.h"
+#include "support/mtk_string.h"
 
 
 #include "forms/dialog_compile_options.h"
@@ -386,7 +387,7 @@ void tab_page::open_link_from_edit(const QString & surl)
     QString full_path = get_full_file_path_from_link(surl, file_info.absoluteDir().absolutePath());
 
     log ("try open file... " + full_path);
-    emit new_tab_requested(full_path, true);
+    Q_EMIT new_tab_requested(full_path, true);
 }
 
 void tab_page::link_clicked(const QUrl & url)
@@ -408,7 +409,7 @@ void tab_page::link_clicked(const QUrl & url)
         //else
         //    full_path = file_info.absoluteDir().absolutePath() + "/" +  surl.mid(QString("eadoc:").size());
         log ("try open file... " + full_path);
-        emit new_tab_requested(full_path, true);
+        Q_EMIT new_tab_requested(full_path, true);
     }
     else if (surl.indexOf("adoc:") == 0)
     {
@@ -418,7 +419,7 @@ void tab_page::link_clicked(const QUrl & url)
         //else
         //    full_path = file_info.absoluteDir().absolutePath() + "/" + surl.mid(QString("adoc:").size());
         log ("try open file... " + full_path);
-        emit new_tab_requested(full_path, false);
+        Q_EMIT new_tab_requested(full_path, false);
     }
     else if (surl.indexOf("run:") == 0)
     {
@@ -460,34 +461,12 @@ tab_page*  get_current_tab_page (QTabWidget* tab)
 
 
 asciidoc_editor::asciidoc_editor(QWidget* w) :
-              QPlainTextEdit(w)
+              MQEditor(w)
               //QTextEdit(w)
             , highlighter(new Highlighter(this->document()))
 {
     this->setFont(QFont ("Monospace", 9));
     connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(on_cursor_position_changed()) );
-    connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(highlightCurrentLine()));
-}
-
-void asciidoc_editor::highlightCurrentLine()
-{
-    QList<QTextEdit::ExtraSelection> extraSelections;
-
-    if (!isReadOnly()) {
-        QTextEdit::ExtraSelection selection;
-
-        QColor lineColor = QColor(Qt::blue).lighter(185);
-
-        selection.format.setBackground(lineColor);
-        selection.format.setProperty(QTextFormat::FullWidthSelection, true);
-        //textCursor().select(QTextCursor::BlockUnderCursor);
-        selection.cursor = textCursor();
-        //selection.cursor.select(QTextCursor::BlockUnderCursor);
-        selection.cursor.clearSelection();
-        extraSelections.append(selection);
-    }
-
-    setExtraSelections(extraSelections);
 }
 
 
@@ -511,14 +490,12 @@ void asciidoc_editor::check_click_on_link(void)
         QString line_clicked = text_cursor.selectedText();
         QRegExp re_link("include::(.*)\\ *\\[\\]\\ *");
         log("QString::number(re_link.indexIn(line_clicked))  " + QString::number(re_link.indexIn(line_clicked)));
-        log ("111111111111111");
         if (re_link.indexIn(line_clicked)>=0)
         {
             log ("located1 and emiting signal... " + re_link.cap(1));
             //QString full_path = get_full_file_path_from_link(re_link.cap(1));
             //log("full path... " + full_path);
-            emit request_open_link(re_link.cap(1), true);
-            log ("22222222222222");
+            Q_EMIT request_open_link(re_link.cap(1), true);
         }
     }
     {   //link:eadoc:qadoceditor.adoc[qAdocEditor]
@@ -529,14 +506,14 @@ void asciidoc_editor::check_click_on_link(void)
             log("clicked on <e>adoc link ...     " + re_link.cap(2));
             //QString full_path = get_full_file_path_from_link(re_link.cap(2));
             //log("full path... " + full_path);
-            emit request_open_link(re_link.cap(2), true);
+            Q_EMIT request_open_link(re_link.cap(2), true);
         }
     }
 }
 
 void asciidoc_editor::mousePressEvent ( QMouseEvent * e )
 {
-    QPlainTextEdit::mouseMoveEvent(e);
+    MQEditor::mouseMoveEvent(e);
     //QTextEdit::mouseMoveEvent(e);
 
     if (e->modifiers()  &  Qt::ControlModifier)
@@ -561,114 +538,8 @@ void asciidoc_editor::keyPressEvent ( QKeyEvent * event )
         return;
     }
 
-    if ((event->key() == Qt::Key_Tab)  &&  (event->modifiers()  &  Qt::ControlModifier) )
-        return;
 
-    if ((event->key() == Qt::Key_Tab)  &&  (event->modifiers()  &  Qt::ControlModifier  & Qt::ShiftModifier) )
-        return;
-
-    if ((event->key() == Qt::Key_Tab)  )
-    {
-        insertPlainText("    ");
-        return;
-    }
-
-    //  emacs movement keys...
-    if ((event->key() == Qt::Key_P)  &&  (event->modifiers()  &  Qt::ControlModifier) )
-    {
-        QTextCursor cursor = this->textCursor();
-        cursor.movePosition(QTextCursor::PreviousBlock);
-        //cursor.movePosition(QTextCursor::PreviousRow);
-        this->setTextCursor(cursor);
-        return;
-    }
-    if ((event->key() == Qt::Key_N)  &&  (event->modifiers()  &  Qt::ControlModifier) )
-    {
-        QTextCursor cursor = this->textCursor();
-        cursor.movePosition(QTextCursor::NextBlock);
-        //cursor.movePosition(QTextCursor::NextRow);
-        this->setTextCursor(cursor);
-        return;
-    }
-    if ((event->key() == Qt::Key_P)  &&  (event->modifiers()  &  Qt::AltModifier) )
-    {
-        QTextCursor cursor = this->textCursor();
-        for (int i=0; i<20; ++i)
-            cursor.movePosition(QTextCursor::PreviousBlock);
-        this->setTextCursor(cursor);
-        return;
-    }
-    if ((event->key() == Qt::Key_N)  &&  (event->modifiers()  &  Qt::AltModifier) )
-    {
-        QTextCursor cursor = this->textCursor();
-        for (int i=0; i<20; ++i)
-            cursor.movePosition(QTextCursor::NextBlock);
-        this->setTextCursor(cursor);
-        return;
-    }
-
-    if ((event->key() == Qt::Key_A)  &&  (event->modifiers()  &  Qt::ControlModifier) )
-    {
-        QTextCursor cursor = this->textCursor();
-        cursor.movePosition(QTextCursor::StartOfBlock);
-        this->setTextCursor(cursor);
-        return;
-    }
-    if ((event->key() == Qt::Key_E)  &&  (event->modifiers()  &  Qt::ControlModifier) )
-    {
-        QTextCursor cursor = this->textCursor();
-        cursor.movePosition(QTextCursor::EndOfBlock);
-        this->setTextCursor(cursor);
-        return;
-    }
-    if ((event->key() == Qt::Key_F)  &&  (event->modifiers()  &  Qt::ControlModifier) )
-    {
-        QTextCursor cursor = this->textCursor();
-        cursor.movePosition(QTextCursor::NextCharacter);
-        this->setTextCursor(cursor);
-        return;
-    }
-    if ((event->key() == Qt::Key_B)  &&  (event->modifiers()  &  Qt::ControlModifier) )
-    {
-        QTextCursor cursor = this->textCursor();
-        cursor.movePosition(QTextCursor::PreviousCharacter);
-        this->setTextCursor(cursor);
-        return;
-    }
-    if ((event->key() == Qt::Key_F)  &&  (event->modifiers()  &  Qt::AltModifier) )
-    {
-        QTextCursor cursor = this->textCursor();
-        cursor.movePosition(QTextCursor::NextWord);
-        this->setTextCursor(cursor);
-        return;
-    }
-    if ((event->key() == Qt::Key_B)  &&  (event->modifiers()  &  Qt::AltModifier) )
-    {
-        QTextCursor cursor = this->textCursor();
-        cursor.movePosition(QTextCursor::PreviousWord);
-        this->setTextCursor(cursor);
-        return;
-    }
-
-    if ((event->key() == Qt::Key_D)  &&  (event->modifiers()  &  Qt::ControlModifier) )
-    {
-        QTextCursor cursor = this->textCursor();
-        cursor.deleteChar();
-        return;
-    }
-    if ((event->key() == Qt::Key_K)  &&  (event->modifiers()  &  Qt::ControlModifier) )
-    {
-        this->textCursor().deleteChar();
-        QTextCursor cursor = this->textCursor();
-        while (this->textCursor().atBlockEnd() == false)
-        {
-            this->textCursor().deleteChar();
-        }
-        return;
-    }
-
-
-    QPlainTextEdit::keyPressEvent(event);
+    MQEditor::keyPressEvent(event);
 }
 
 
@@ -1118,3 +989,7 @@ void MainWindow::keyPressEvent ( QKeyEvent * event )
 */
 
 
+void mtk::AlarmMsg(const Alarm &error)
+{
+    log(MTK_SS(error).c_str());
+}

@@ -2,18 +2,19 @@
 #define MAINWINDOW_H
 
 #include <QtGui/QMainWindow>
+#include "mqeditor.h"
 #include <QPlainTextEdit>
-//#include <QTextEdit>
 #include <QFileInfo>
 #include <QProcess>
 #include <QtWebKit>
+
 
 #include "highlighter.h"
 
 
 
 
-class  asciidoc_editor : public QPlainTextEdit
+class  asciidoc_editor : public MQEditor
 {
     Q_OBJECT
 public:
@@ -37,7 +38,6 @@ private:
 
 private slots:
     void on_cursor_position_changed(void);
-    void highlightCurrentLine();
 };
 
 

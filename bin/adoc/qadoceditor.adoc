@@ -21,12 +21,11 @@ José Luis Esteban
 
 | Revision date |   {docdate} {doctime}
 
-|Version |   
+| Version |   
 
-|Document name |   {docname}
+| Document name |   {docname}
 
-|Document file |   {docfile}
-
+| Document file |   {docfile}
 
 |========================================================
 
@@ -143,6 +142,19 @@ Filters will create the directory if it doesn't exists. In any case, consider it
 +
 [TIP]
 The best way to know the editor, is testing it with real files (like this one)
+
+
+== Snapshots
+
+* Code completion 1
+
+image:{docdir}/qadoc1.png[scale=35]
+
+
+* Code completion 2
+
+image:{docdir}/qadoc2.png[scale=35]
+
 
 
 [[keys_shorcuts]]
